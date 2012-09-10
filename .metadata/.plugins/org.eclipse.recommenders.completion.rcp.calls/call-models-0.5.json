@@ -1,0 +1,27 @@
+{
+  "D:\\android\\workspace\\ProviderProject\\src": {
+    "location": "D:\\android\\workspace\\ProviderProject\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\android\\workspace\\ProviderProject\\src\u0027. Skipped."
+  },
+  "D:\\android\\android-sdk-windows\\platforms\\android-16\\android.jar": {
+    "location": "D:\\android\\android-sdk-windows\\platforms\\android-16\\android.jar",
+    "status": "UNRESOLVED",
+    "error": "No call model found for \u0027D:\\android\\android-sdk-windows\\platforms\\android-16\\android.jar\u0027. Neither fingerprint \u00273dcce76e951c5ffaf5fc1e15001bbf62b54e9857\u0027 nor symbolic name \u0027android\u0027 are known."
+  },
+  "D:\\android\\workspace\\ScreenProject\\gen": {
+    "location": "D:\\android\\workspace\\ScreenProject\\gen",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\android\\workspace\\ScreenProject\\gen\u0027. Skipped."
+  },
+  "D:\\android\\workspace\\MemorizeSentence\\src": {
+    "location": "D:\\android\\workspace\\MemorizeSentence\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\android\\workspace\\MemorizeSentence\\src\u0027. Skipped."
+  },
+  "D:\\android\\workspace\\ScreenProject\\src": {
+    "location": "D:\\android\\workspace\\ScreenProject\\src",
+    "status": "UNRESOLVED",
+    "error": "No class path info available for \u0027D:\\android\\workspace\\ScreenProject\\src\u0027. Skipped."
+  }
+}
