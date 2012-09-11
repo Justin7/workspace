@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import my.andr.memorize.db.EngDbAdapter;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -42,11 +41,11 @@ public class SentenceListActivity extends ListActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		selectedCategoryIndex = ____________________("eng_sentence",MODE_WORLD_READABLE).getInt("selectedCategoryIndex",0);
+		selectedCategoryIndex = getSharedPreferences("eng_sentence",MODE_WORLD_READABLE).getInt("selectedCategoryIndex",0);
 		Spinner spinner = (Spinner) findViewById(R.id.alone_category);
 		spinner.setSelection(selectedCategoryIndex);
 		sentenceList();
-		int lastPosition = ____________________("eng_sentence",MODE_WORLD_READABLE).getInt("last_position",0);
+		int lastPosition = getSharedPreferences("eng_sentence",MODE_WORLD_READABLE).getInt("last_position",0);
 		getListView().setSelection(lastPosition);// 마지막 위치로 이동
 	}
    /** 
@@ -99,7 +98,7 @@ public class SentenceListActivity extends ListActivity {
 		// 스피너 항목 선택시 처리
 		Spinner spinner = (Spinner) findViewById(R.id.alone_category);
 		spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-			public void ______________(AdapterView<?> parent, View view,
+			public void onItemSelected(AdapterView<?> parent, View view,
 					int position, long id) {
 				selectedCategoryIndex = position;
 				savePreference("selectedCategoryIndex", selectedCategoryIndex);
@@ -111,7 +110,7 @@ public class SentenceListActivity extends ListActivity {
 		//리스트 항목을 클릭시 처리
 		getListView().setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void ___________(AdapterView<?> arg0, View arg1, int position, long id) {
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long id) {
 				String noString = ((TextView) arg1.findViewById(R.id.exe_alone_list_no)).getText().toString();
 				/** 선택한 위치값 저장 */ 
 				savePreference("last_position", position);
@@ -132,7 +131,7 @@ public class SentenceListActivity extends ListActivity {
 				MODE_WORLD_READABLE);
 		Editor edit = pref.edit();
 		edit.putInt(key, no);
-		edit.apply();
+		edit.commit();
 	}
 }// end ExerciseAloneActivity
 

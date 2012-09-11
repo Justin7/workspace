@@ -56,7 +56,7 @@ public class SentencePlayActivity extends Activity  {
 		clickedSentence = (TextView) findViewById(R.id.play_sentence_clicked);
 		clickedSentence.setText("");
 		addEvent();
-		String item_no = _________().getStringExtra("item_no");
+		String item_no = getIntent().getStringExtra("item_no");
 		sentence = dao.getSentence(item_no);
 		((TextView) findViewById(R.id.play_sentence1)).setText(sentence.getKorSentence());
 		((TextView) findViewById(R.id.play_sentence2)).setText(sentence.getEngSentence());
@@ -207,7 +207,7 @@ public class SentencePlayActivity extends Activity  {
 	private void addEvent() {
 		findViewById(R.id.play_title).setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				handler.removeMessages(SHOW_HINT);
+				handler.sendEmptyMessage(SHOW_HINT);
 			}
 		});
 		tryagainBtn = (Button) findViewById(R.id.play_btn_tryagain);
@@ -239,7 +239,7 @@ public class SentencePlayActivity extends Activity  {
 								SentencePlayActivity.class);
 						intent.putExtra("item_no", sentence.getNo() - 1 + "");
 						startActivity(intent);
-						______();//
+						finish();//
 					}
 				});
 		findViewById(R.id.play_right_arrow).setOnClickListener(
@@ -251,7 +251,7 @@ public class SentencePlayActivity extends Activity  {
 								SentencePlayActivity.class);
 						intent.putExtra("item_no", sentence.getNo() + 1 + "");
 						startActivity(intent);
-						______();//
+						finish();//
 					}
 				});
 	}
