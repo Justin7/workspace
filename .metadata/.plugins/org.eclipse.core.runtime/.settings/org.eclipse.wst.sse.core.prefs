@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-task-tag-projects-already-scanned=ActivityProject,MemorizeSentence,MyProject,ProviderProject,ReceiverProject,ScreenProject,ServiceProject
+task-tag-projects-already-scanned=ActionBarMechanics,ActionBarOptions,ActionBarTabs,ActionBarUsage,FragmentHideShow,FragmentLayout,FragmentLife,LoaderCursor,OnStartCommand
