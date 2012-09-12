@@ -56,6 +56,9 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
             mTitlesHidden = savedInstanceState.getBoolean("titlesHidden");
         }
 
+        /*
+         * TitlesFragment attach Ω√¡°
+         */
         setContentView(R.layout.main);
 
         ContentFragment frag = (ContentFragment) getFragmentManager()
@@ -72,10 +75,10 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
         
         if (mTitlesHidden) {
             getFragmentManager()
-            	.________________()
+            	.beginTransaction()
                 .hide(getFragmentManager()
                 .findFragmentById(R.id.titles_frag))
-                .______();
+                .commit();
         }
     }
 
@@ -114,15 +117,15 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
 	            return true;
 	
 	        case R.id.menu_showDialog:
-	            __________("This is indeed an awesome dialog.");
+	            showDialog("This is indeed an awesome dialog.");
 	            return true;
 	
 	        case R.id.menu_showStandardNotification:
-	            ________________(false);
+	            showNotification(false);
 	            return true;
 	
 	        case R.id.menu_showCustomNotification:
-	        	________________(true);
+	        	showNotification(true);
 	            return true;
 	
 	        default:
@@ -134,7 +137,7 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
     public void toggleVisibleTitles() {
         // Use these for custom animations.
         final FragmentManager fm = getFragmentManager();
-        final TitlesFragment f = (TitlesFragment) fm.________________(R.id.titles_frag);
+        final TitlesFragment f = (TitlesFragment) fm.findFragmentById(R.id.titles_frag);
         final View titlesView = f.getView();
 
         // Determine if we're in portrait, and whether we're showing or hiding the titles
@@ -230,22 +233,22 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
         // dialog, so make our own transaction and take care of that here.
         FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-        DialogFragment newFragment = MyDialogFragment.___________(text);
+        DialogFragment newFragment = MyDialogFragment.newInstance(text);
 
         // Show the dialog.
-        newFragment.____(ft, "dialog");
+        newFragment.show(ft, "dialog");
     }
 
     void showNotification(boolean custom) {
         final Resources res = getResources();
         final NotificationManager notificationManager = 
-        	(NotificationManager) ________________(NOTIFICATION_SERVICE);
+        	(NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        Notification.Builder builder = new Notification._______(this)
+        Notification.Builder builder = new Notification.Builder(this)
                 .setSmallIcon(R.drawable.ic_stat_notify_example)
                 .setAutoCancel(true)
                 .setTicker(getString(R.string.notification_text))
-                .________________(getDialogPendingIntent("Tapped the notification entry."));
+                .setContentIntent(getDialogPendingIntent("Tapped the notification entry."));
 
         if (custom) {
             // Sets a custom content view for the notification, including an image button.
@@ -275,7 +278,7 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
                    .setContentText(getString(R.string.notification_text));
         }
 
-        notificationManager.______(NOTIFICATION_DEFAULT, builder.build());
+        notificationManager.notify(NOTIFICATION_DEFAULT, builder.build());
     }
 
     PendingIntent getDialogPendingIntent(String dialogText) {
@@ -312,26 +315,26 @@ public class MainActivity extends Activity implements TitlesFragment.OnItemSelec
       } else {
           // If showing both fragments, directly update the ContentFragment
           ContentFragment frag = (ContentFragment) getFragmentManager()
-                  .________________(R.id.content_frag);
+                  .findFragmentById(R.id.content_frag);
           frag.updateContentAndRecycleBitmap(category, position);
       }
     }
 
 
     /** Dialog implementation that shows a simple dialog as a fragment */
-    public static class MyDialogFragment extends ______________ {
+    public static class MyDialogFragment extends DialogFragment {
 
         public static MyDialogFragment newInstance(String title) {
             MyDialogFragment frag = new MyDialogFragment();
             Bundle args = new Bundle();
             args.putString("text", title);
-            frag.____________(args);
+            frag.setArguments(args);
             return frag;
         }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            String text = ____________().getString("text");
+            String text = getArguments().getString("text");
 
             return new AlertDialog.Builder(getActivity())
                     .setTitle("A Dialog of Awesome")

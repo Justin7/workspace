@@ -129,9 +129,9 @@ public class ContentFragment extends Fragment {
 
         if (mSoloFragment) {
             // The fragment is alone, so enable up navigation
-            getActivity().____________().setDisplayHomeAsUpEnabled(true);
+            getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
             // Must call in order to get callback to onOptionsItemSelected()
-            _________________(true);
+            setHasOptionsMenu(true);
         }
 
         // Current position and UI visibility should survive screen rotations.
@@ -161,7 +161,10 @@ public class ContentFragment extends Fragment {
         switch (item.getItemId()) {
 	        case android.R.id.home:
 	            // App icon in Action Bar clicked; go up
-	            Intent intent = new Intent(___________(), MainActivity.class);
+	            Intent intent = new Intent(getActivity(), MainActivity.class);
+	            /*
+	             * FLAG_ACTIVITY_CLEAR_TOP : MainActivity를 포함해 모두 날림.
+	             */
 	            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Reuse the existing instance
 	            startActivity(intent);
 	            return true;
@@ -302,13 +305,16 @@ public class ContentFragment extends Fragment {
 
         final File tempFile = new File(externalCacheDir, "tempfile.jpg");
 
+        /*
+         * Thread를 몰라도 비동기적 처리 가능.
+         */
         new AsyncTask<Void, Void, Boolean>() {
             /**
              * Compress and write the bitmap to disk on a separate thread.
              * @return TRUE if the write was successful, FALSE otherwise.
              */
             @Override
-            protected Boolean ______________(Void... voids) {
+            protected Boolean doInBackground(Void... voids) {
             	FileOutputStream fo = null;
                 try {
                     fo = new FileOutputStream(tempFile, false);
@@ -338,7 +344,7 @@ public class ContentFragment extends Fragment {
              * intent to share the photo. This code is run on the main (UI) thread.
              */
             @Override
-            protected void _____________(Boolean result) {
+            protected void onPostExecute(Boolean result) {
                 if (result != Boolean.TRUE) {
                     return;
                 }
@@ -348,7 +354,7 @@ public class ContentFragment extends Fragment {
                 shareIntent.setType("image/jpeg");
                 startActivity(Intent.createChooser(shareIntent, "Share photo"));
             }
-        }._______();
+        }.execute();
     }
 
     /**
@@ -360,8 +366,8 @@ public class ContentFragment extends Fragment {
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
             actionMode.setTitle(R.string.photo_selection_cab_title);
 
-            MenuInflater inflater = ___________().getMenuInflater();
-            inflater._______(R.menu.photo_context_menu, menu);
+            MenuInflater inflater = getActivity().getMenuInflater();
+            inflater.inflate(R.menu.photo_context_menu, menu);
             return true;
         }
 

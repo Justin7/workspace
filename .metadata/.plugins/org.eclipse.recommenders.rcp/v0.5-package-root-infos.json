@@ -22,19 +22,6 @@
     },
     "jarFileFingerprint": "612846c9857077a039b533718f72db3bc041d389",
     "jarFileModificationDate": "2012-09-10T13:27:19.296+09:00",
-    "location": "D:\\android\\workspace\\ReceiverProject\\libs\\android-support-v4.jar",
-    "javaRuntime": false
-  },
-  {
-    "symbolicName": "android-support-v4",
-    "version": {
-      "major": -1,
-      "minor": -1,
-      "micro": -1,
-      "qualifier": ""
-    },
-    "jarFileFingerprint": "612846c9857077a039b533718f72db3bc041d389",
-    "jarFileModificationDate": "2012-09-10T13:27:19.296+09:00",
     "location": "D:\\android\\workspace\\ScreenProject\\libs\\android-support-v4.jar",
     "javaRuntime": false
   },
@@ -48,7 +35,20 @@
     },
     "jarFileFingerprint": "612846c9857077a039b533718f72db3bc041d389",
     "jarFileModificationDate": "2012-09-10T13:27:19.296+09:00",
-    "location": "D:\\android\\workspace\\ServiceProject\\libs\\android-support-v4.jar",
+    "location": "D:\\android\\workspace\\ReceiverProject\\libs\\android-support-v4.jar",
+    "javaRuntime": false
+  },
+  {
+    "symbolicName": "android",
+    "version": {
+      "major": -1,
+      "minor": -1,
+      "micro": -1,
+      "qualifier": ""
+    },
+    "jarFileFingerprint": "3dcce76e951c5ffaf5fc1e15001bbf62b54e9857",
+    "jarFileModificationDate": "2012-07-29T00:12:01.031+09:00",
+    "location": "D:\\android\\android-sdk-windows\\platforms\\android-16\\android.jar",
     "javaRuntime": false
   },
   {
@@ -65,16 +65,16 @@
     "javaRuntime": false
   },
   {
-    "symbolicName": "android",
+    "symbolicName": "android-support-v4",
     "version": {
       "major": -1,
       "minor": -1,
       "micro": -1,
       "qualifier": ""
     },
-    "jarFileFingerprint": "3dcce76e951c5ffaf5fc1e15001bbf62b54e9857",
-    "jarFileModificationDate": "2012-07-29T00:12:01.031+09:00",
-    "location": "D:\\android\\android-sdk-windows\\platforms\\android-16\\android.jar",
+    "jarFileFingerprint": "612846c9857077a039b533718f72db3bc041d389",
+    "jarFileModificationDate": "2012-09-10T13:27:19.296+09:00",
+    "location": "D:\\android\\workspace\\ServiceProject\\libs\\android-support-v4.jar",
     "javaRuntime": false
   },
   {

@@ -29,7 +29,7 @@ import android.widget.TextView;
  * in MainActivity. In this case, selecting a list item opens the ContentActivity,
  * which likewise holds only the ContentFragment.
  */
-public class TitlesFragment extends ____________ implements ActionBar.TabListener {
+public class TitlesFragment extends ListFragment implements ActionBar.TabListener {
     OnItemSelectedListener mListener;
     private int mCategory = 0;
     private int mCurPosition = 0;
@@ -64,7 +64,7 @@ public class TitlesFragment extends ____________ implements ActionBar.TabListene
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ContentFragment frag = (ContentFragment) __________________()
+        ContentFragment frag = (ContentFragment) getFragmentManager()
                 .findFragmentById(R.id.content_frag);
         if (frag != null) mDualFragments = true;
 
@@ -73,9 +73,9 @@ public class TitlesFragment extends ____________ implements ActionBar.TabListene
         	mDualFragments = false;
         }
         
-        ActionBar bar = getActivity().___________();
+        ActionBar bar = getActivity().getActionBar();
         bar.setDisplayHomeAsUpEnabled(false);
-        bar._________________(ActionBar.NAVIGATION_MODE_TABS);
+        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         // Must call in order to get callback to onCreateOptionsMenu()
         setHasOptionsMenu(true);
@@ -224,8 +224,11 @@ public class TitlesFragment extends ____________ implements ActionBar.TabListene
      * which this fragment implements to handle events when tabs are selected.
      */
 
-    public void _____________(ActionBar.Tab tab, FragmentTransaction ft) {
-        TitlesFragment titleFrag = (TitlesFragment) __________________()
+    /*
+     * TabListener를 implements하면 아래 3개 method를 구현해야 함
+     */
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        TitlesFragment titleFrag = (TitlesFragment) getFragmentManager()
                 .findFragmentById(R.id.titles_frag);
         titleFrag.populateTitles(tab.getPosition());
         
