@@ -35,14 +35,14 @@ public class WidgetService extends Service {
 		// PendingIntent의 설정 (4)
 		Intent in = new Intent();
 		in.setAction(ACTION_BTNCLICK);
-		PendingIntent pending = PendingIntent.__________(this, 0, in, PendingIntent.FLAG_UPDATE_CURRENT);
-		view.setOnClickPendingIntent(R.id._________, pending);
+		PendingIntent pending = PendingIntent.getService(this, 0, in, PendingIntent.FLAG_UPDATE_CURRENT);
+		view.setOnClickPendingIntent(R.id.imageview, pending);
 
 		Log.i("log", "intent.getAction(): "+intent.getAction());
 		// 이미지 뷰가 클릭될 때의 처리 (5)
 		if (ACTION_BTNCLICK.equals(intent.getAction())) {
 			int idx = new Random().nextInt(6);
-			view.____________________(R.id.imageview, ids[idx]);
+			view.setImageViewResource(R.id.imageview, ids[idx]);
 		}
 
 		// 홈 스크린 위젯의 화면 갱신 (6)
@@ -50,7 +50,7 @@ public class WidgetService extends Service {
 		ComponentName widget = new ComponentName(
 			"my.andr.dice",
 			"my.andr.dice.WidgetDice");
-		manager._______________(widget, view);
+		manager.updateAppWidget(widget, view);
 		
 		return START_STICKY;
 	}
