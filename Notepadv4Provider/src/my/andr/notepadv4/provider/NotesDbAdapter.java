@@ -35,6 +35,9 @@ public class NotesDbAdapter extends ContentProvider {
         sUriMatcher.addURI(Notes.AUTHORITY, "notes/#", NOTE_ID);
     }
     
+    /*
+     * DB 작업 3단계 : 생성자 -> onCreate -> onUpgrade 정의
+     */
 	private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -87,6 +90,9 @@ public class NotesDbAdapter extends ContentProvider {
 		}
 		if (rowId < 0) throw new SQLException("Failed to insert row into " + uri);
 	    uri = ContentUris.withAppendedId(Notes.CONTENT_URI, rowId);
+	    /*
+	     * notifyChange() : Cursor가 requery 될 수 있도록 공지함.
+	     */
 	    getContext().getContentResolver().notifyChange(uri, null);
 	    return uri;		
 	}	

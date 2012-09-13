@@ -60,6 +60,9 @@ public class Notepadv4 extends Activity {
 			registerForContextMenu(getListView());
 		}
 
+		/*
+		 * Loader 3단계 구현  : onCreateLoader -> onLoadFinished -> onLoaderReset
+		 */
 		public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 			return new CursorLoader(getActivity(), 
 					Notes.CONTENT_URI, 

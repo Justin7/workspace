@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.TabHost;
 import android.content.Intent;
 
+import my.andr.snake.Snake;
+
 @SuppressWarnings("deprecation")
 public class Tabs3 extends TabActivity {
 	@Override
@@ -26,5 +28,9 @@ public class Tabs3 extends TabActivity {
 		tabHost.addTab(tabHost.newTabSpec("tab3")
 				.setIndicator("photo list")
 				.setContent(new Intent(this, List8.class)));
+		
+		tabHost.addTab(tabHost.newTabSpec("tab4")
+				.setIndicator("snake")
+				.setContent(new Intent(this, Snake.class)));
 	}
 }

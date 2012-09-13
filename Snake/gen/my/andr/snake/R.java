@@ -16,28 +16,28 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int tileSize=0x7f010000;
+        public static int tileSize=0x7f010000;
     }
     public static final class drawable {
-        public static final int greenstar=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int redstar=0x7f020002;
-        public static final int yellowstar=0x7f020003;
+        public static int greenstar=0x7f020000;
+        public static int ic_launcher=0x7f020001;
+        public static int redstar=0x7f020002;
+        public static int yellowstar=0x7f020003;
     }
     public static final class id {
-        public static final int snake=0x7f050000;
-        public static final int text=0x7f050001;
+        public static int snake=0x7f050000;
+        public static int text=0x7f050001;
     }
     public static final class layout {
-        public static final int main_snake=0x7f030000;
+        public static int main_snake=0x7f030000;
     }
     public static final class string {
-        public static final int app_name=0x7f040000;
-        public static final int mode_lose_prefix=0x7f040003;
-        public static final int mode_lose_suffix=0x7f040004;
-        public static final int mode_pause=0x7f040002;
-        public static final int mode_ready=0x7f040001;
-        public static final int snake_layout_text_text=0x7f040005;
+        public static int app_name=0x7f040000;
+        public static int mode_lose_prefix=0x7f040003;
+        public static int mode_lose_suffix=0x7f040004;
+        public static int mode_pause=0x7f040002;
+        public static int mode_ready=0x7f040001;
+        public static int snake_layout_text_text=0x7f040005;
     }
     public static final class styleable {
         /** Attributes that can be used with a TileView.

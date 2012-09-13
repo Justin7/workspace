@@ -32,6 +32,12 @@ public class Notepadv4 extends ListActivity {
 		registerForContextMenu(getListView());
 	}
 
+	/*
+	 * cursor가 갖고 있는 데이터 관리를 LoadManager에 위임하지 않으면
+	 * DB 조작을 할 때마다  fillData()와 같은 method를 직접 호출하여
+	 * cursor를 requery해주어야 함
+	 * -> 비표준
+	 */
 	private void fillData() {
 		CursorLoader cl = new CursorLoader(this, Notes.CONTENT_URI,
 				new String[] { Notes._ID, Notes.TITLE, Notes.BODY }, null,
@@ -92,6 +98,10 @@ public class Notepadv4 extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
 		Intent i = new Intent(this, NoteEdit.class);
+		/*
+		 * DB를 사용하는 앱에서는 intent에 데이터를 담지 않도록 함.
+		 * --> DB에 있는 데이터만 가치 있는 것. 그래서 primary key만 담음.
+		 */
 		i.putExtra(Notes._ID, id);
 		startActivityForResult(i, ACTIVITY_EDIT);
 	}

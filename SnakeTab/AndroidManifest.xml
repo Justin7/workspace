@@ -20,6 +20,8 @@
         <activity android:name=".Controls2" />
         <activity android:name=".List1" />
         <activity android:name=".List8" />
+        <activity android:name="my.andr.snake.Snake" />
+        
     </application>
 
 </manifest>

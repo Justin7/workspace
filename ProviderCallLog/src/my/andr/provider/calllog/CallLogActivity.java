@@ -1,6 +1,7 @@
 package my.andr.provider.calllog;
 
 import android.app.ListActivity;
+import android.content.ContentUris;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.database.Cursor;
@@ -65,12 +66,12 @@ public class CallLogActivity extends ListActivity {
 		super.onListItemClick(l, v, position, id);
 
 		//1.
-		c.moveToPosition(position);
-		String s=c.getString(c.getColumnIndexOrThrow(CallLog.Calls.NUMBER));		
-		Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel://"+s));
+//		c.moveToPosition(position);
+//		String s=c.getString(c.getColumnIndexOrThrow(CallLog.Calls.NUMBER));		
+//		Intent i = new Intent(Intent.ACTION_DIAL, Uri.parse("tel://"+s));
 		//2.
-		//Uri uri=ContentUris.withAppendedId(CallLog.Calls.CONTENT_URI, id);
-		//Intent i=new Intent(Intent.ACTION_VIEW, uri);
+		Uri uri=ContentUris.withAppendedId(CallLog.Calls.CONTENT_URI, id);
+		Intent i=new Intent(Intent.ACTION_VIEW, uri);
 				
 		startActivity(i);
 	}

@@ -35,7 +35,7 @@ public class BrightnessActivity extends Activity{
 			public void onClick(View v){
 				int newValue=Integer.parseInt(et.getText().toString());
 				
-				// 1. 값 변경하기
+				// 1. 값 변경하기 : column의 put method를 활용한 방법 (2번 보다 더 많이 사용)
 				//android.provider.Settings.System.putInt(
 				//	getContentResolver(),     
 				//	android.provider.Settings.System.SCREEN_BRIGHTNESS,     
